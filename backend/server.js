@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const connectDB = require("./config/db");
 
 dotenv.config();
 
@@ -14,6 +15,8 @@ app.use(express.json());
 //라우터연결
 const chatbotRoutes = require("./routes/chatbotRoutes");
 app.use("/chat", chatbotRoutes);
+
+connectDB();
 
 //서버 시작
 app.listen(PORT, () => {
